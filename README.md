@@ -1,4 +1,5 @@
 SwadShaala – Intelligent Recipe & Cooking Assistant 🍳✨
+
 Welcome to SwadShaala: Your smart, online culinary companion!
 This Django-based platform helps users—especially beginners—cook smarter, safer, and healthier. SwadShaala isn’t just a digital recipe book; it’s a full-fledged cooking assistant offering ingredient scaling, AI tips, utensil/flame guidance, shopping list generation, and much more—delivered with a crisp, Bootstrap-powered UI.
 
