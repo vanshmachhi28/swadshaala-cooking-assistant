@@ -1,0 +1,36 @@
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* If you want more spacing for the main card section: */
+.card {
+  margin: 32px 0;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.footer {
+  background-color: #f97316;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+

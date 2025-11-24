@@ -1,0 +1,109 @@
+{% load static %}
+<div class="recipe-comments-popup-wrapper" id="recipe-comments-modal-{{ recipe.id }}" style="display:none;">
+    <div class="recipe-comments-popup">
+        <h3>Comments for {{ recipe.recipe_name }}</h3>
+        <form method="POST" id="add-comment-form">
+            {% csrf_token %}
+            <textarea name="content" placeholder="Add your comment..." required></textarea>
+            <input type="hidden" name="parent_id" id="parent-id-field" value="">
+            <button type="submit">Post</button>
+        </form>
+        <ul class="comments-list">
+            {% for comment in comments %}
+            <li>
+                <div>
+                    <strong>{{ comment.user.username }}</strong>: {{ comment.content }}
+                    <span>({{ comment.created_at }})</span>
+                </div>
+                <div>
+                    <button class="rate-btn" data-id="{{ comment.id }}" data-helpful="true">
+                        👍 Helpful ({{ comment.helpful_count }})
+                    </button>
+                    <button class="reply-btn" data-id="{{ comment.id }}">Reply</button>
+                </div>
+                <ul>
+                {% for reply in comment.child_comments.all %}
+                    <li>
+                        <strong>{{ reply.user.username }}</strong>: {{ reply.content }}
+                        <span>({{ reply.created_at }})</span>
+                        <button class="rate-btn" data-id="{{ reply.id }}" data-helpful="true">
+                            👍 Helpful ({{ reply.helpful_count }})
+                        </button>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+        <button class="close-comments">Close</button>
+    </div>
+</div>
+<script>
+document.querySelectorAll('.reply-btn').forEach(btn => {
+    btn.onclick = function() {
+        document.getElementById('parent-id-field').value = btn.dataset.id;
+        document.getElementById('add-comment-form').scrollIntoView();
+    }
+});
+document.querySelectorAll('.rate-btn').forEach(btn => {
+    btn.onclick = function() {
+        fetch("{% url 'rate_comment' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `comment_id=${btn.dataset.id}&helpful=${btn.dataset.helpful}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                btn.innerText = `👍 Helpful (${data.helpful_count})`;
+            }
+        });
+    }
+});
+document.querySelector('.close-comments').onclick = function() {
+    document.getElementById('recipe-comments-modal-{{ recipe.id }}').style.display = 'none';
+};
+document.querySelector('.recipe-comment-btn').onclick = function() {
+    document.getElementById('recipe-comments-modal-{{ recipe.id }}').style.display = 'flex';
+};
+document.getElementById('add-comment-form').onsubmit = function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch("{% url 'add_recipe_comment' recipe.id %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            location.reload();
+        }
+    });
+};
+</script>
+<style>
+.recipe-comments-popup-wrapper {
+    position: fixed; z-index: 888; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #0008; display: flex; align-items: center; justify-content: center;
+}
+.recipe-comments-popup {
+    background: #fff; border-radius: 12px; box-shadow: 0 0 32px #0002; padding: 32px; width: 90vw; max-width: 500px;
+    max-height: 80vh; overflow-y: auto;
+}
+.comments-list { list-style: none; padding: 0;}
+.comments-list li {
+    background: #f7f7fa; margin-bottom: 14px; border-radius: 8px; padding: 12px 16px;
+}
+.comments-list strong { color: #ff8928; }
+.rate-btn, .reply-btn, .close-comments {
+    background: #ffd; border: 1px solid #ff8928; color: #ff8928;
+    border-radius: 7px; margin-left: 8px; padding: 5px 13px; cursor: pointer;
+}
+.close-comments { float: right; background: #ff414e; color: #fff; }
+</style>

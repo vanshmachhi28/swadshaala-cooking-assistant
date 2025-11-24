@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Uploaded</title>
+  <link rel="stylesheet" href="{% static 'recipe_app/success_page.css' %}">
+</head>
+<body>
+  <div class="page-wrapper">
+    <main class="page-content">
+  <!-- Header -->
+  {% include 'recipe_app/header.html' %}
+
+
+  <!-- Success Container -->
+  <div class="container">
+    <h2>🎉 Recipe Uploaded Successfully!</h2>
+    <p>Your recipe has been saved.</p>
+
+    <div class="buttons">
+      <a href="{% url 'home_page' %}" class="btn">Back to Home Page</a>
+    </div>
+  </div>
+</main>
+  <!-- Footer -->
+ <!-- Footer -->
+<footer>
+  {% include 'recipe_app/footer.html' %}
+
+</footer>
+</div>
+</body>
+</html>

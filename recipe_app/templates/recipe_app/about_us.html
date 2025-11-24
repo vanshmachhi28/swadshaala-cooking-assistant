@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>About Us | SwadShaala</title>
+  <link rel="stylesheet" href="{% static 'recipe_app/home_page_button.css' %}">
+  <link rel="stylesheet" href="{% static 'recipe_app/home_page.css' %}">
+</head>
+<style>
+body {
+    background: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 880px;
+    margin: 40px auto 0 auto;
+    background: #fff;
+}
+.about-title {
+    text-align: center;
+    color: #ff414e;
+    font-weight: 700;
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+.about-img {
+    width: 240px;
+    margin: 0 auto 18px auto;
+    display: block;
+    filter: drop-shadow(0 3px 18px #ff89283c);
+    border-radius: 12px;
+}
+.about-section {
+    font-size: 1.07rem;
+    color: #222;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 7px #ffde2250;
+    padding: 7px 10px 0 10px;
+}
+.about-section ul {
+    margin: 14px 0 18px 16px;
+}
+.about-section li {
+    margin-bottom: 6px;
+}
+.about-section strong {
+    color: #ff8928;
+}
+@media (max-width: 680px) {
+    .container { padding: 0 5vw;}
+    .about-title { font-size: 1.25rem;}
+    .about-img { width: 72vw;}
+}
+</style>
+
+<body>
+  {% include 'recipe_app/header.html' %}
+    <main class="container">
+      <img src="/media/recipes/about_us.jpg" alt="Cooking utensils" class="about-img">
+      <h2 class="about-title">About SwadShaala</h2>
+      <section class="about-section">
+        <p>Our recipes primarily use fresh, unprocessed ingredients but we also believe there is a time and a place for canned, frozen, and other prepared ingredients. We believe in a diet that includes a wide variety of foods: real butter and cream, extra virgin olive oil, eggs, lots of fruits and vegetables, and protein from meat, fish, beans, and cheese. Plus cake for dessert.</p>
+        <ul>
+          <li><strong>First, does it work?</strong> Recipes need to be easy to follow and provide reliable results, every time.</li>
+          <li><strong>Second, is it delicious?</strong> Does the dish make us smile inside and out? Do we want to eat the whole batch by ourselves?</li>
+          <li><strong>Third, is it worth the effort?</strong> Do we want to make it again (and again and again)?</li>
+        </ul>
+        <p>
+          To make sure each of these standards is met, we start by working with expert recipe developers—people with the experience and knowledge to not only develop a good recipe in their own kitchens, but to make sure that recipe works in yours. Next, we thoroughly review and edit every recipe in-house line by line. Finally, each new recipe is run by our team of recipe testers working in home kitchens with the same pots, pans, and tools that you use in yours. Only after all this is the recipe shared on SwadShaala.
+        </p>
+        <p>
+          Additionally, at SwadShaala, we aspire to provide the highest quality content produced by humans, for humans. It is against our guidelines to publish automatically generated content using AI (artificial intelligence) writing tools such as ChatGPT.
+        </p>
+      </section>
+    </main>
+    <footer>
+      {% include 'recipe_app/footer.html' %}
+    </footer>
+</body>
+
+</html>

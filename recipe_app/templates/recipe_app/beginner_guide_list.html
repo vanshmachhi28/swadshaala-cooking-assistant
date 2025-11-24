@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beginner Cooking Guides | SwadShaala</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/view_recipe_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/home_page_button.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/success_page.css' %}">
+    <style>
+    body { background: white; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0;}
+    .guide-list-card {
+        background: #fff;
+        border-radius: 20px;
+        max-width: 800px;
+        box-shadow: 0 6px 26px #ff892832;
+        padding: 36px 32px;
+        margin: 38px auto 38px auto;
+    }
+    h1 {
+        color: #ff414e;
+        font-size: 2.1rem;
+        font-weight: bold;
+        margin-bottom: 25px;
+        text-align: center;
+        letter-spacing: 1.1px;
+    }
+    ul.guide-list { 
+        margin: 0; 
+        padding: 0; 
+        list-style: none; 
+    }
+    ul.guide-list li { 
+        margin-bottom: 22px;
+        font-size: 1.09rem;
+        color: #222;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #ff892828;
+    }
+    .recipe-title { 
+        font-weight: bold; 
+        color: #ff8928; 
+        font-size: 1.08rem; 
+    }
+    .guide-link {
+        color: #ff414e;
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 8px;
+        transition: color 0.14s;
+    }
+    .guide-link:hover {
+        color: #ff8928;
+        text-decoration: underline;
+    }
+    @media(max-width: 700px) {
+        .guide-list-card { padding: 13px 3vw; border-radius: 10px;}
+        h1 { font-size: 1.22rem;}
+    }
+    </style>
+</head>
+<body>
+    {% include 'recipe_app/header.html' %}
+    <div class="guide-list-card">
+        <h1>All Beginner Cooking Guides</h1>
+        <ul class="guide-list">
+            {% for guide in guides %}
+                <li>
+                    <span class="recipe-title">{{ guide.recipe.recipe_name }}</span>
+                    {% if guide.tooltip_text %}
+                        <span style="color:#384;">({{ guide.tooltip_text|truncatechars:75 }})</span>
+                    {% endif %}
+                    <a href="{% url 'beginner_guide' guide.recipe.pk %}" class="guide-link">View Guide</a>
+                </li>
+            {% empty %}
+                <li>No beginner guides found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% include 'recipe_app/footer.html' %}
+</body>
+</html>

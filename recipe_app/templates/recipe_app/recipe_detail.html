@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ data.recipe_name }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/recipe_detail.css' %}">
+    <style>
+        body { background: #f7f7fa; font-family: 'Segoe UI', Arial, sans-serif; }
+        .detail-card {
+            max-width: 1050px; margin: 2rem auto; background: #fff; border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(244,115,33,0.13); display: flex; flex-wrap: wrap; overflow: hidden;
+        }
+        .detail-image-wrap { flex: 2; min-width: 320px; background: #faf7f1; display: flex; align-items: center; justify-content: center; }
+        .detail-image { width: 95%; height: auto; max-width: 400px; border-radius: 24px; box-shadow: 0 0 40px #f3c19466; margin: 32px 0;}
+        .detail-content { flex: 3; padding: 48px 32px 36px 32px; }
+        .detail-content h1 { margin-bottom: 10px; font-size: 2.6rem; font-weight: 700; color: #212121; }
+        .detail-desc { margin-bottom: 20px; font-size: 1.15rem; color: #555; }
+        .detail-tags { display: flex; flex-wrap: wrap; gap: 24px; margin: 22px 0 20px 0;}
+        .detail-tag { background: #f3c194; color: #26241d; border-radius: 16px; padding: 12px 20px; min-width: 120px; margin-bottom: 10px; box-shadow: 0 1px 8px 0 #e5aa52cc; font-size: 1.09rem; }
+        .detail-tag b { display: block; font-size: 1rem; margin-bottom: 2px; color: #f47321; }
+        .detail-steps { background: #fff8ee; border-left: 4px solid #f47321; border-radius: 12px; box-shadow: 0 0 8px #f6d39d44; padding: 18px 20px; margin-top: 22px; font-size: 1.08rem; }
+        .detail-steps h2 { color: #f47321; font-size: 1.33rem; margin-bottom: 8px; font-weight: bold; }
+        .video-guide { margin-top: 18px; }
+        .video-guide a { color: #f47321; font-weight: 600; text-decoration: none; background: #fff3e6; padding: 8px 18px; border-radius: 40px; box-shadow: 0 0 8px #f47321b0;}
+        .video-guide a:hover { background: #f47321; color: #fff; }
+        @media (max-width: 900px){ .detail-card { flex-direction: column; } .detail-content { padding: 32px 14px; } }
+        @media (max-width:580px){ .detail-card { margin: 1rem 5px; } }
+    </style>
+</head>
+<body>
+    {% include 'recipe_app/header.html' %}
+    <div class="detail-card">
+        <div class="detail-image-wrap">
+            <img src="{{ data.image.url }}" alt="{{ data.recipe_name }}" class="detail-image"/>
+        </div>
+        <div class="detail-content">
+            <h1>{{ data.recipe_name }}</h1>
+            <div class="detail-desc">{{ data.description }}</div>
+            <div class="detail-tags">
+                <div class="detail-tag"><b>Prep Time</b>{{ data.prep_time }}</div>
+                <div class="detail-tag"><b>Serves</b>{{ data.serves }}</div>
+                <div class="detail-tag"><b>Difficulty</b>{{ data.difficulty }}</div>
+                <div class="detail-tag"><b>Meal Type</b>{{ data.meal_type }}</div>
+                <div class="detail-tag"><b>Utensils Needed</b>{{ data.utensils }}</div>
+                <div class="detail-tag"><b>Cook Time</b>{{ data.cook_time }}</div>
+                <div class="detail-tag"><b>Calories</b>{{ data.calories }}</div>
+                <div class="detail-tag"><b>Flame Level</b>{{ data.flame_level }}</div>
+            </div>
+            {% if data.video_url %}
+            <div class="video-guide">
+                <a href="{{ data.video_url }}" target="_blank">Watch Video Guide</a>
+            </div>
+            {% endif %}
+            <div class="detail-steps">
+                <h2>Cooking Steps</h2>
+                <p>{{ data.cooking_steps|linebreaks }}</p>
+            </div>
+        </div>
+        <button class="recipe-comment-btn" style="background:#ff8928; color:#fff; border:none; padding:12px 22px; border-radius:12px; cursor:pointer;">
+    💬 Comments
+</button>
+{% include 'recipe_app/recipe_comments_list.html' with recipe=data %}
+
+    </div>
+
+    {% include 'recipe_app/footer.html' %}
+</body>
+</html>

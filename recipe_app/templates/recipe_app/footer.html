@@ -1,0 +1,96 @@
+{% load static %}
+<style>
+.swad-footer {
+    background: #ffde22;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #ff414e;
+    padding: 38px 0 10px 0;
+    text-align: center;
+    border-top: 2px solid #ff8928;
+    margin-top: 36px;
+}
+.footer-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+.footer-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff414e;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+.footer-links {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.footer-links a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.6px;
+    transition: color 0.18s;
+    text-transform: uppercase;
+}
+.footer-links a:hover {
+    color: #ff414e;
+}
+.footer-bottom {
+    max-width: 1100px;
+    margin: 18px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ffe3cb;
+    font-size: 1rem;
+    color: #ff8928;
+    padding: 10px 48px 0 48px;
+}
+.privacy-btn {
+    color: #222;
+    background: #fff;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.01rem;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+    border: 2px solid #ff8928;
+}
+.privacy-btn:hover {
+    background: #ff414e;
+    color: #fff;
+}
+@media (max-width: 700px) {
+    .footer-main { gap: 16px; }
+    .footer-links { flex-direction: column; gap: 14px; }
+    .footer-bottom { flex-direction: column; gap: 10px; padding: 7px 12px 0 12px;}
+}
+</style>
+
+<footer class="swad-footer">
+    <div class="footer-main">
+        <span class="footer-title">SwadShaala</span>
+        <div class="footer-links">
+            <a href="{% url 'about_us' %}">About Us</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+            <a href="{% url 'add_recipe' %}">Add Recipe</a>
+            <a href="{% url 'beginner_guide_list' %}" class="nav-btn">Beginner Guides</a>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>&copy; 2025 SwadShaala. All rights reserved.</div>
+        <div>
+            <a href="#" class="privacy-btn">&#128274; PRIVACY FEEDBACK | Powered by TRUSTe</a>
+        </div>
+    </div>
+</footer>

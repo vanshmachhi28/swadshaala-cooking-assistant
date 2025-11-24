@@ -1,0 +1,99 @@
+{% load static %}
+
+<style>
+.site-header {
+    background: #ffde22;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    box-shadow: 0 2px 8px #ff892813;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.logo-link {
+    text-decoration: none;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff414e;
+    letter-spacing: 2px;
+    margin-right: 36px;
+    text-transform: uppercase;
+}
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.nav-btn {
+    background: none;
+    color: #222;
+    padding: 0;
+    font-size: 1.07rem;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: none;
+    transition: color 0.13s;
+    cursor: pointer;
+}
+.nav-btn:hover,
+.nav-btn.active {
+    color: #ff414e;
+    background: none;
+    text-decoration: none;
+}
+.user-greeting {
+    font-weight: 700;
+    color: #222;
+    margin-right: 18px;
+    margin-left: 10px;
+    font-size: 1.07rem;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 900px){
+    .site-header { flex-direction: column; padding: 0 5px; height: auto; }
+    .logo-text { font-size: 1.2rem; margin-right: 10px; }
+    .header-buttons { gap: 12px; flex-wrap: wrap; }
+}
+</style>
+
+<header class="site-header">
+    <a href="{% url 'home_page' %}" class="logo-link">
+        <span class="logo-text">SwadShaala</span>
+    </a>
+    <nav class="header-buttons">
+        
+        <a href="{% url 'add_recipe' %}" class="nav-btn">Add Recipe</a>
+        
+        <a href="{% url 'recipe_list' %}" class="nav-btn">All Recipes</a>
+
+
+        <a href="{% url 'ingredient_scaler'  %}" class="nav-btn">Ingredient Scaler</a>
+      <!--  <a href="{% url 'beginner_guide_list' %}" class="nav-btn">Beginner Guide</a> -->
+        <a href="{% url 'about_us' %}" class="nav-btn">About Us</a>
+        <a href="{% url 'contact_us' %}" class="nav-btn">Contact Us</a>
+        
+        <a href="{% url 'view_shopping_cart' %}" style="margin-left:20px; color: #ff414e;">
+            🧾 List
+        </a>
+        {% if user.is_authenticated %}
+            <span class="user-greeting">Hello, {{ user.username }}!</span>
+            <a href="{% url 'logout' %}" class="nav-btn">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="nav-btn">Login</a>
+            <a href="{% url 'register' %}" class="nav-btn">Sign Up</a>
+        {% endif %}
+        
+        <a href="/admin/" class="nav-btn">Admin</a>
+    </nav>
+</header>

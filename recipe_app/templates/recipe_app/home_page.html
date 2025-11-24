@@ -1,0 +1,426 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SwadShaala — Home</title>
+  <link rel="stylesheet" href="{% static 'recipe_app/home_page_button.css' %}" />
+  <link rel="stylesheet" href="{% static 'recipe_app/home_page.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- Team/intro section start -->
+<style>
+body {
+    background: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.swad-full-carousel {
+    background: white;
+    padding-top: 18px;
+    padding-bottom: 14px;
+}
+.swad-carousel-area {
+    width: 96vw; /* nearly the full width */
+    max-width: 1500px;
+    min-width: 320px;
+    margin: 0 auto;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 7px 36px #ff892819;
+    position: relative;
+}
+.swad-carousel-img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    background: #fff;
+}
+.swad-carousel-caption {
+    position: absolute;
+    bottom: 44px;
+    left: 55px;
+    background: #ffffffef;
+    border-radius: 23px;
+    padding: 30px 54px;
+    color: #ff414e;
+    box-shadow: 0 3px 24px #ff892829;
+    min-width: 270px;
+    max-width: 480px;
+    z-index: 3;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+.swad-carousel-title {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #ff414e;
+    margin-bottom: 6px;
+}
+.swad-carousel-desc {
+    font-size: 1.25rem;
+    color: #ff8928;
+    font-weight: 600;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #ff414e;
+    border-radius: 15px;
+    width: 3rem; height: 3rem;
+}
+@media (max-width: 1100px){
+    .swad-carousel-area { width: 99vw; }
+    .swad-carousel-img { height: 180px; }
+    .swad-carousel-caption { left: 2vw; padding: 14px 10px; max-width: 88vw; }
+    .swad-carousel-title { font-size: 1.2rem; }
+}   
+
+
+
+
+
+.swad-welcome-card {
+    background: #fff;
+    border-radius: 26px;
+    max-width: 900px;
+    min-width: 350px;
+    margin: 35px auto 25px auto;
+    box-shadow: 0 8px 32px #ff89281a;
+    padding: 44px 48px 36px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.swad-welcome-card h2 {
+    color: #ff414e;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.swad-welcome-card p {
+    color: #2d2410;
+    font-size: 1.19rem;
+    margin-bottom: 0;
+}
+.swad-welcome-actions {
+    margin-top: 22px;
+    display: flex;
+    gap: 18px;
+}
+.swad-welcome-btn {
+    background: #ff414e;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 14px 36px;
+    border-radius: 15px;
+    margin-right: 8px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px #ff892814;
+    transition: background 0.16s;
+}
+.swad-welcome-btn:last-child {
+    background: #fff;
+    color: #ff8928;
+    border: 2px solid #ff8928;
+    box-shadow: 0 2px 10px #ff89281b;
+}
+.swad-welcome-btn:hover { background: #ff8928; color: #fff; }
+.swad-welcome-btn:last-child:hover { background: #ff414e; color: #fff; border-color: #ff414e; }
+.swad-content-row {
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 44px auto 24px auto;
+    gap: 52px;
+    flex-wrap: wrap;
+}
+.swad-info-section {
+    background: #fffde2;
+    border-radius: 18px;
+    box-shadow: 0 1px 14px #ff892813;
+    padding: 30px 40px;
+    max-width: 500px;
+    min-width: 270px;
+    color: #384;
+}
+.swad-info-title {
+    color: #ff414e;
+    font-weight: bold;
+    font-size: 1.23rem;
+    margin-bottom: 10px;
+}
+.swad-info-body {
+    color: #232323;
+    font-size: 1.05rem;
+}
+@media (max-width:930px){
+    .swad-welcome-card { padding: 18px 3vw; }
+    .swad-content-row { gap: 18px; flex-direction: column; align-items: center;}
+    .swad-info-section { padding: 18px 4vw;}
+}
+
+
+
+
+
+
+.team-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1260px;
+    margin: 34px auto 24px auto;
+    background: none;
+}
+.team-left {
+    flex: 2;
+    min-width: 330px;
+    padding: 36px 32px 36px 0;
+}
+.team-title {
+    font-size: 2.7rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    color: #ff414e;
+    line-height: 1.11;
+}
+.team-desc {
+    font-size: 1.13rem;
+    color: #232323;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+.readmore-btn {
+    display: inline-block;
+    padding: 11px 23px;
+    font-size: 1rem;
+    background: #ff8928;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 17px;
+    transition: background 0.17s;
+    box-shadow: 0 2px 8px #ff892833;
+    margin-top: 14px;
+    letter-spacing: 0.9px;
+}
+.readmore-btn:hover {
+    background: #ff414e;
+    color: #fff;
+}
+
+.team-right {
+    flex: 3;
+    background: #fffde7;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 32px;
+    padding: 38px 30px 30px 30px;
+    justify-content: center;
+    box-shadow: 0 2px 16px #ff892826;
+    border: 2px solid #ff8928;
+}
+.team-member {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 18px 0 18px;
+}
+.team-icon-wrap {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 11px #ff892813;
+    margin-bottom: 9px;
+    border: 2.3px solid #ff8928;
+}
+.team-label {
+    margin-top: 4px;
+    font-weight: bold;
+    color: #ff414e;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+.team-role {
+    font-size: 0.92rem;
+    color: #138157;
+    margin-top: 2.5px;
+    text-align: center;
+}
+@media (max-width: 1080px) {
+    .team-section { flex-direction: column; align-items: stretch; }
+    .team-left { padding: 32px 16px 12px 16px; }
+    .team-right { margin-top:14px;}
+}
+@media (max-width: 680px) {
+    .card-wrap { border-radius: 13px; padding: 18px 7vw;}
+    .team-title { font-size: 1.5rem;}
+    .team-section { margin: 10px 1px;}
+    .team-right {gap: 0 9px; padding: 18px 4vw;}
+}
+</style>
+
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header -->
+    {% include 'recipe_app/header.html' %}
+
+
+
+
+<!-------Carousel -->
+
+<div class="swad-full-carousel">
+  <div id="swadshaalaHeroCarousel" class="carousel slide swad-carousel-area position-relative" data-bs-ride="carousel" data-bs-interval="2000" data-bs-wrap="true">
+    <div class="carousel-inner">
+      <div class="carousel-item active position-relative">
+        <img src="{% static 'recipe_app/slide1.jpg' %}" class="swad-carousel-img" alt="Slide 1">
+        <div class="swad-carousel-caption">
+          <div class="swad-carousel-title">Easy Home Recipes</div>
+          <div class="swad-carousel-desc">Discover simple, beginner-friendly meals for every day.</div>
+        </div>
+      </div>
+      <div class="carousel-item position-relative">
+        <img src="{% static 'recipe_app/slide2.jpg' %}" class="swad-carousel-img" alt="Slide 2">
+        <div class="swad-carousel-caption">
+          <div class="swad-carousel-title">Nutrition & Health</div>
+          <div class="swad-carousel-desc">Balanced eating tips for healthy, happy cooking at home.</div>
+        </div>
+      </div>
+      <div class="carousel-item position-relative">
+        <img src="{% static 'recipe_app/slide3.jpg' %}" class="swad-carousel-img" alt="Slide 3">
+        <div class="swad-carousel-caption">
+          <div class="swad-carousel-title">Flame & Utensil Guide</div>
+          <div class="swad-carousel-desc">Master your kitchen tools and learn perfect heat techniques.</div>
+        </div>
+      </div>
+      <div class="carousel-item position-relative">
+        <img src="{% static 'recipe_app/slide4.jpg' %}" class="swad-carousel-img" alt="Slide 4">
+        <div class="swad-carousel-caption">
+          <div class="swad-carousel-title">Smart Recipe Scalability</div>
+          <div class="swad-carousel-desc">Easily adapt ingredient quantities for any serving size.</div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#swadshaalaHeroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#swadshaalaHeroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+    <div class="swad-welcome-card">
+  <h2>Welcome 👋</h2>
+  <p>Cook, share & enjoy — upload your favorite recipes below.</p>
+  <div class="swad-welcome-actions">
+    <a href="{% url 'add_recipe' %}" class="swad-welcome-btn">Add Recipe</a>
+    <a href="{% url 'recipe_list' %}" class="swad-welcome-btn">View All Recipes</a>
+  </div>
+</div>
+
+<div class="swad-content-row">
+  <div class="swad-info-section">
+    <div class="swad-info-title">Why SwadShaala?</div>
+    <div class="swad-info-body">SwadShaala makes home cooking easier with step-by-step guides, scalable ingredients, and expert-tested tips — all with a friendly Indian touch!</div>
+  </div>
+  <div class="swad-info-section">
+    <div class="swad-info-title">All Skill Levels Welcome</div>
+    <div class="swad-info-body">From beginner cooks to kitchen pros, anyone can find or share recipes, guides, and helpful advice to make every meal a success.</div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="team-section">
+    <div class="team-left">
+        <img src="{% static 'recipe_app/whisk.jpg' %}" alt="Whisk Icon" style="display:block;width:77px;margin-bottom:16px;">
+        <div class="team-title">The SwadShaala Team</div>
+        <div class="team-desc">
+            SwadShaala is a trusted resource for home cooks with modern, beginner-friendly recipes, smart guides, and community support. Drawing food lovers from across India, we believe in making healthy, joyful cooking accessible to everyone.<br>
+            Our digital kitchen is powered by a passionate group of culinary creators, developers, testers, and tech foodies!
+        </div>
+        <a class="readmore-btn" href="{% url 'about_us' %}">READ MORE &rarr;</a>
+    </div>
+    <div class="team-right">
+        <div class="team-member">
+            <div class="team-icon-wrap">
+                <img src="{% static 'recipe_app/recipe_hat.jpg' %}" alt="Chef Hat" width="62">
+            </div>
+            <div class="team-label">Kinjal V. Machhi</div>
+            <div class="team-role">Founder/Lead Developer</div>
+        </div>
+        <div class="team-member">
+            <div class="team-icon-wrap">
+                <img src="{% static 'recipe_app/whisk1.0.jpg' %}" alt="Whisk" width="56">
+            </div>
+            <div class="team-label">Ruchi Tools</div>
+            <div class="team-role">Cooking Guide Designer</div>
+        </div>
+        <div class="team-member">
+            <div class="team-icon-wrap">
+                <img src="{% static 'recipe_app/rolling_pin.jpg' %}" alt="Rolling Pin" width="60">
+            </div>
+            <div class="team-label">Aashi's Prep</div>
+            <div class="team-role">Recipe Tester</div>
+        </div>
+        <div class="team-member">
+            <div class="team-icon-wrap">
+                <img src="{% static 'recipe_app/spatula.jpg' %}" alt="Spatula" width="49">
+            </div>
+            <div class="team-label">VyanjanBot</div>
+            <div class="team-role">AI Recipe Helper</div>
+        </div>
+        <div class="team-member">
+            <div class="team-icon-wrap">
+                <img src="{% static 'recipe_app/cook_pot.jpg' %}" alt="Cook Pot" width="58">
+            </div>
+            <div class="team-label">Healthy Bytes</div>
+            <div class="team-role">Nutrition & Health</div>
+        </div>
+        <div class="team-member">
+            <div class="team-icon-wrap">
+                <img src="{% static 'recipe_app/tablet.jpg' %}" alt="Tablet" width="43">
+            </div>
+            <div class="team-label">CodeChef</div>
+            <div class="team-role">Full Stack Engineer</div>
+        </div>
+    </div>
+</div>
+<!-- Team/intro section end -->
+
+    <!-- Footer -->
+    <footer>
+    {% include 'recipe_app/footer.html' %}
+
+    </footer>
+  </div>
+</body>
+</html>

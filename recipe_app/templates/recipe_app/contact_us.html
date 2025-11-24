@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | SwadShaala</title>
+  <link rel="stylesheet" href="{% static 'recipe_app/home_page_button.css' %}">
+  <link rel="stylesheet" href="{% static 'recipe_app/home_page.css' %}">
+</head>
+<style>
+body {
+    background: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 44px auto 0 auto;
+    background: #fff;
+    border-radius: 21px;
+    box-shadow: 0 5px 24px #ff892825;
+    padding: 38px 34px 34px 34px;
+}
+h2 {
+    text-align: center;
+    color: #ff414e;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+form label {
+    color: #ff8928;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    margin-bottom: 2px;
+}
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    background: #fffde7;
+    border-radius: 7px;
+    border: 1.7px solid #ff8928;
+    padding: 8px 10px;
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 3px;
+    transition: border 0.12s;
+}
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #ff414e;
+    outline: none;
+}
+.btn, button.btn, button[type="submit"] {
+    background: #ff414e;
+    color: #fff;
+    border: 2px solid #ff414e;
+    padding: 11px 0;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background 0.14s, color 0.15s, border 0.14s;
+}
+.btn:hover, button.btn:hover, button[type="submit"]:hover {
+    background: #ff8928;
+    border-color: #ff8928;
+    color: #fff;
+}
+@media (max-width: 650px) {
+    .container { border-radius: 12px; padding: 13px 2vw;}
+    h2 { font-size: 1.14rem;}
+}
+</style>
+
+<body>
+  <div class="page-wrapper">
+    {% include 'recipe_app/header.html' %}
+
+    <main class="container" style="max-width:600px;margin:32px auto;">
+      <h2 class="mb-4 text-center">Contact Us</h2>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" style="background-color:#f97316; color:white;">Submit Query</button>
+      </form>
+    </main>
+    <footer>
+      {% include 'recipe_app/footer.html' %}
+
+    </footer>
+  </div>
+</body>
+</html>

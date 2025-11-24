@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Recipes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: whitesmoke;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .main-section {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 6px 22px #ff892818;
+      padding: 32px 18px;
+    }
+    .nav-pills .nav-link.active {
+      background: linear-gradient(90deg,#ff8928 70%, #ff414e 100%);
+      color: #fff !important;
+      font-weight: bold;
+      border-radius: 30px;
+    }
+    .nav-pills .nav-link {
+      color: #ff414e !important;
+      background: #fff;
+      font-weight: 600;
+      margin: 0 8px;
+      border-radius: 30px;
+      transition: background 0.2s,color 0.2s;
+    }
+    .hover-zoom:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .card {
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fffde6;
+    }
+    .card-img-top {
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 2px solid #ffede6;
+    }
+    .recipe-link-btn {
+      margin: 10px 7px 0 7px;
+    }
+    .card-title {
+      color: #f47321;
+      font-weight: 700;
+    }
+    .card-text {
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .no-recipes {
+      color: #ff414e;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    @media (max-width:767px) {
+      .card-img-top {
+        height: 140px;
+      }
+      .main-section {
+        padding: 12px 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include 'recipe_app/header.html' %}
+  <main class="container my-5 main-section">
+    <h2 class="mb-4 text-center" style="color: #b2834b;">🍴 All Recipes</h2>
+    <!-- Bootstrap Tabs for Meal Types -->
+    <ul class="nav nav-pills mb-4 justify-content-center" id="mealTypeTabs" role="tablist">
+      {% for type in meal_types %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link {% if forloop.first %}active{% endif %}"
+                  id="tab-{{ type|lower }}"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pane-{{ type|lower }}"
+                  type="button" role="tab">
+            {{ type }}
+          </button>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="tab-content" id="mealTypeTabsContent">
+      {% regroup recipes by meal_type as meal_groups %}
+      {% for type in meal_types %}
+        <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="pane-{{ type|lower }}" role="tabpanel">
+          <div class="row justify-content-center">
+            {% with found=0 %}
+              {% for group in meal_groups %}
+                {% if group.grouper == type %}
+                  {% for recipe in group.list %}
+                    {% ifchanged %}{% widthratio 1 1 1 as found %}{% endifchanged %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                      <div class="card shadow-sm hover-zoom">
+                        <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.recipe_name }}" loading="lazy" />
+                        <div class="card-body text-center">
+                          <h3 class="card-title">{{ recipe.recipe_name }}</h3>
+                          <p class="card-text">{{ recipe.description|truncatewords:10 }}</p>
+                          <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary recipe-link-btn">Detail</a>
+                          <a href="{% url 'beginner_guide' recipe.pk %}" class="btn btn-outline-warning recipe-link-btn">Beginner Guide</a>
+                          <a href="{% url 'flame_utensil_guide' recipe.pk %}" class="btn btn-outline-danger recipe-link-btn">Flame & Utensil Guide</a>
+
+                          <button class="btn btn-warning add-to-cart-btn" data-recipe="{{ recipe.id }}" ...>
+                            Add to Shopping List
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+              {% if not recipes|dictsort:"meal_type"|length or not found %}
+                <p class="no-recipes text-center">No {{ type }} recipes found!</p>
+              {% endif %}
+            {% endwith %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+  {% include 'recipe_app/footer.html' %}
+
+  <!-- Add Animate.css and Bootstrap Toast for success message -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <div id="cart-toast" class="toast align-items-center text-bg-success border-0 position-fixed end-0 bottom-0 m-4" role="alert" aria-live="assertive" aria-atomic="true" style="z-index:9999; display:none;">
+    <div class="d-flex">
+      <div class="toast-body fw-bold">Added to shopping list! 🛒</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <script>
+  document.querySelectorAll('.add-to-cart-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      fetch("{% url 'add_to_shopping_cart' 0 %}".replace('0', btn.dataset.recipe), {
+        method: 'GET',
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.success) {
+          var toast = document.getElementById('cart-toast');
+          toast.style.display = 'block';
+          setTimeout(function(){ toast.style.display = 'none'; }, 2000);
+        }
+      });
+    });
+  });
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

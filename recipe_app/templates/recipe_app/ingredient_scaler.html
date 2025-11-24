@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ recipe.recipe_name }} - Ingredient Scaler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .scaler-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 85vh;
+            padding-top: 48px;
+        }
+        .scaler-container {
+            width: 550px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(255, 65, 78, 0.28);
+            padding: 38px 26px 28px 26px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+        .scaler-container:hover {
+            transform: scale(1.03);
+            box-shadow:
+                0 8px 40px rgba(255, 65, 78, 0.6),
+                0 0 50px #ff8928;
+        }
+        h2 {
+            color: #ff414e;
+            margin-bottom: 24px;
+            font-weight: 700;
+            font-size: 1.9rem;
+            letter-spacing: 1.2px;
+            background: linear-gradient(90deg, #ff8928, #ff414e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        form.scaler-form {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+        }
+        label {
+            font-weight: 700;
+            color: #855c3f;
+            align-self: center;
+            min-width: 70px;
+        }
+        select,
+        input[type='number'] {
+            border-radius: 8px;
+            border: 1.5px solid #ff8928;
+            padding: 8px 14px;
+            font-size: 1rem;
+            width: 110px;
+            transition: border-color 0.3s;
+            font-weight: 600;
+            color: #252316;
+            outline-offset: 2px;
+        }
+        select:focus,
+        input[type='number']:focus {
+            border-color: #ff414e;
+            box-shadow: 0 0 8px #ff414eaa;
+        }
+        button {
+            background: #ff414e;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 26px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 14px #ff414eaa;
+            transition: background 0.25s, box-shadow 0.25s;
+            flex-shrink: 0;
+        }
+        button:hover,
+        button:focus {
+            background: #ff8928;
+            box-shadow: 0 8px 28px #ff8928cc;
+        }
+        table.ingredient-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+            box-shadow: 0 0 18px #ff892833;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .ingredient-table thead th {
+            background: #ff8928;
+            color: #fff;
+            padding: 12px 15px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-align: left;
+            user-select: none;
+        }
+        .ingredient-table tbody tr:hover {
+            background: #ffde22aa;
+            color: #552600;
+            cursor: default;
+            transition: background 0.3s;
+        }
+        .ingredient-table tbody td {
+            padding: 12px 15px;
+            font-weight: 600;
+            color: #252316;
+        }
+        @media (max-width: 600px) {
+            .scaler-container {
+                width: 97vw;
+                padding: 16px 4vw;
+            }
+            .scaler-main { padding-top: 18px;}
+        }
+    </style>
+</head>
+<body>
+    {% include 'recipe_app/header.html' %}
+    <div class="scaler-main">
+        <div class="scaler-container shadow-sm">
+            <h2>Ingredient & Serving Scaler</h2>
+            <form method="get" class="scaler-form">
+                <label for="recipe_id">Recipe:</label>
+                <select name="recipe_id" id="recipe_id" required>
+                    {% for rec in recipes %}
+                        <option value="{{ rec.pk }}" {% if rec == recipe %}selected{% endif %}>{{ rec.recipe_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="servings">Servings:</label>
+                <input type="number" name="servings" id="servings" min="1" value="{{ servings }}" required />
+                <button type="submit">Scale</button>
+                <span style="font-size: .9rem; color: #855c3f; align-self: center;">(Default: {{ default_servings }})</span>
+            </form>
+            <table class="ingredient-table">
+                <thead>
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ing in scaled_ingredients %}
+                        <tr>
+                            <td>{{ ing.name }}</td>
+                            <td>{{ ing.quantity }}</td>
+                            <td>{{ ing.unit }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% include 'recipe_app/footer.html' %}
+</body>
+</html>

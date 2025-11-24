@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beginner Cooking Guide</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/view_recipe_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/home_page_button.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'recipe_app/success_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+    body {
+        background: white ;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .guide-container {
+        max-width: 660px;
+        margin: 38px auto 38px auto;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 6px 28px #ff892832;
+        padding: 36px 32px;
+    }
+    .guide-container h2 {
+        color: #ff414e;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    .guide-container p {
+        color: #232323;
+        font-size: 1.15rem;
+        margin-bottom: 22px;
+        line-height: 1.6;
+        text-align: center;
+    }
+    .guide-container iframe {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 8px;
+        border-radius: 12px;
+        border: 2px solid #ff8928;
+        box-shadow: 0 3px 16px #ff892829;
+        min-height: 300px;
+        min-width: 60%;
+        max-width: 100%;
+    }
+    @media (max-width: 720px){
+        .guide-container{ border-radius: 12px; padding: 13px 2vw;}
+        .guide-container h2 { font-size: 1.13rem; }
+        .guide-container iframe { min-width: 98%; min-height: 180px;}
+    }
+    </style>
+</head>
+<body>
+    {% include 'recipe_app/header.html' %}
+    <div class="guide-container">
+      <h2>Beginner Cooking Guide: {{ recipe.recipe_name }}</h2>
+      {% if guide %}
+        <p>{{ guide.tooltip_text }}</p>
+        {% if guide.video_url %}
+          <iframe src="{{ guide.video_url }}" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+      {% else %}
+        <p>No beginner guide available for this recipe.</p>
+      {% endif %}
+    </div>
+    {% include 'recipe_app/footer.html' %}
+</body>
+</html>
