@@ -1,122 +1,135 @@
-SwadShaala – Intelligent Recipe & Cooking Platform 🍲✨
-Welcome to SwadShaala, your next-generation web platform for smart home cooking and recipe mastery! SwadShaala blends culinary tradition with cutting-edge technology: structured recipe management, AI-driven cooking guidance, ingredient scaling, instant grocery planning, and a beautiful, intuitive UI for cooks of any level.
+🍲 SwadShaala – Intelligent Recipe & Cooking Platform ✨
+Welcome to SwadShaala, the next-generation web platform where tradition meets technology! Cook smarter, safer, and healthier with structured recipe management, AI-powered guidance, instant grocery planning, ingredient scaling, and a gorgeous, intuitive UI.
 
-Project Overview 📘
-SwadShaala harnesses the power of Django and MySQL to help everyone—students, beginners, food explorers—discover, learn, and prepare great food at home. Core modules simplify every part of the cooking journey, from recipe curation and stepwise guidance to meal planning, smart ingredient tips, and flexible shopping lists.
-SwadShaala’s focus is on accessibility, smart automation, and making home cooking both easy and exciting.
+📘 Project Overview
+SwadShaala makes home cooking simple for everyone—from beginners to foodies.
+Harnessing Django, MySQL, and modern UI, you get:
 
-Core Features 🛠️
-Smart Recipe Management: Structure-rich recipes: media, types, utensils, calories, flame guidance, and stepwise instructions.
+Easy recipe search/categorization
 
-AI/NLP-Powered Beginner Guide: Get instant, easy explanations for tough steps, common warning tips, tooltips, and useful videos.
+Stepwise cooking instructions (with utensils & flame levels)
 
-Adaptive Ingredient & Serving Scaler: Auto-calculate ingredient quantities for any serving size—ideal for solo or family meals.
+Shopping list generation & export
 
-Meal Type & Time Filtering: Tag/browse/search recipes by meal type, filter by prep/cook time and plan ahead with confidence.
+Smart ingredient scaling and substitutions
 
-Shopping List Generator: Build dynamic grocery lists from your selected recipes and export as PDF/CSV—ingredients grouped by category.
+Admin dashboard for community management
 
-Utensil & Flame Guidance: Every step has utensil and flame info (low/med/high) for true beginner friendliness and cooking accuracy.
+SwadShaala is all about accessibility, automation, and enjoyment in your kitchen.
 
-Ingredient Substitution & Health Mode: AI recommends healthy swaps for allergies, diets (vegan, gluten-free, etc), or out-of-stock items.
+🛠️ Core Features
+Smart Recipe Management
+Media-rich, structured recipes: steps, utensils, calories, flame level, and more.
 
-Recipe Discovery via Web Scraper: Trending recipes are scraped, cleaned, and suggested directly from the top food platforms online.
+AI/NLP-Powered Beginner Guide
+Auto-explanations, common-sense warnings, and inline help for tricky steps.
 
-Role-Based Authentication: Secure personal dashboard for each user, with admin oversight for all content and community safety.
+Adaptive Ingredient Scaler
+Instantly adjust all ingredient quantities for any number of servings.
 
-Modern, Responsive UI: Powered by Bootstrap, Animate.css, and thoughtful design for use on desktop, tablet, and mobile.
+Meal Type & Time Tags
+Tag and filter recipes by type (breakfast, lunch, etc.) and timing (prep, cook).
 
-Why SwadShaala? 🌏
-Too many cooks struggle with scaling, ingredient doubts, tool confusion, and meal planning chaos. SwadShaala transforms frustration into confidence—making every step visual, interactive, and safe. Whether you’re a student, a new chef, or a home cook wanting to level up, SwadShaala is truly your digital recipe mentor.
+Shopping List Generator
+Add recipes to your cart → auto-group by category → export as PDF/CSV.
 
-Technologies Used 🖥️
-Screenshots 🖼️
-Check the Screenshots folder for a visual tour:
+Utensil & Flame Guidance
+Clear visuals for the right tool and flame for every step—making beginners fearless.
 
-Screenshots/Home_Page.jpg – Colorful, mobile-friendly landing page
+Health & Substitution Suggestions
+AI offers swaps for allergies/diets and suggests healthy replacements.
 
-Screenshots/User_Login.jpg – Secure registration and login
+Web Recipe Scraper
+Discover trending recipes from leading food websites, auto-tagged for your use.
 
-Screenshots/Recipe_List.jpg – Browse and filter recipes easily
+Role-Based Access
+Every user gets a secure dashboard; admins ensure quality and community safety.
 
-Screenshots/Add_Recipe.jpg – Media-rich add recipe form
+Modern, Responsive UI
+Built with Bootstrap, Animate.css, and a touch of color for a joyful cooking journey!
 
-Screenshots/Admin_Dashboard.jpg – Powerful admin controls
+🌏 Why SwadShaala?
+So many want to cook but… scaling fails, ingredient doubts, utensil confusion, and planning stress hold them back. SwadShaala solves all these problems at every step—making cooking visual, interactive, and always achievable. Master every meal, even if you're just starting out.
 
-Screenshots/Contact_Us.jpg – User help & support screen
+🖥️ Technologies Used
+🖼️ Screenshots
+See the Screenshots/ folder for more!
 
-(These images showcase SwadShaala's real UI—fast, friendly, and clear!)
+Home Page
 
-Project Folders & Content
-recipe_app/: All Django backend code, views, models, templates, and static files
+Login Screen
 
-media/: File uploads (recipe images, etc)
+Recipe List View
 
-Screenshots/: Main UI screens for quick reference
+Add Recipe Form
 
-diagrams/: Architecture, flowcharts, and UML diagrams
+Admin Dashboard
 
-README.md: You’re reading it!
+Contact Us
 
-Stages Timeline 🗂️
+📂 Project Structure
+text
+recipe_app/        # Django app: core backend, views, templates, static
+media/             # Uploaded recipe images & files
+Screenshots/       # UI screens for demo/review
+diagrams/          # UML, architecture, and process diagrams
+README.md          # Project documentation (this file)
+🗂️ Project Timeline
 Stage	What Was Done
-Planning	Brainstormed modules, UI wireframes, feature set
-Setup	Django/MySQL config, user auth, recipe model, base UI
-Implementation	Stepwise dev: scaler, guides, scraper, export, security
-Testing	Manual/automated tests for all major modules
-Optimization	UI/UX polish, responsive design, field validation
-Release	Uploaded project, screenshots, and docs to GitHub
-Quick Start / Installation 🚀
-Clone the repository:
+Planning	Functional brainstorm, wireframe UI, define feature set
+Setup	Django proj, MySQL config, user auth, basic UI framework
+Implementation	Core modules: scaler, scraper, guides, health, export, admin
+Testing	Manual & automated, edge-case focus, validator tuning
+Optimization	UI/UX polish, bug squashing, mobile & accessibility improvements
+Release	Repository upload, screenshots, documentation, demo-ready project
+🚀 Quick Start / Installation
+Clone:
 
 bash
 git clone https://github.com/vanshmachhi28/swadshaala-cooking-assistant.git
 cd swadshaala-cooking-assistant
-Install all requirements:
+Install requirements:
 
 bash
 pip install -r requirements.txt
-Set up MySQL:
+DB Setup:
 
-Create an empty database.
+Create an empty MySQL database.
 
-Edit settings.py with your credentials.
+Fill your credentials into settings.py.
 
-Migrate:
+Run:
 
 bash
 python manage.py migrate
-Load demo data (if provided) or create your own recipes via the web UI.
-
-Run the server:
+Run Server:
 
 bash
 python manage.py runserver
-Visit: http://127.0.0.1:8000/
+Visit http://127.0.0.1:8000/ to start using!
 
-How to Use
-Register or log in for your personal dashboard
+💡 How to Use
+Register/log in for your own SwadShaala dashboard.
 
-Manage recipes, meal plans, and ingredient lists
+Organize, discover, and scale recipes.
 
-Get AI-powered help and safety advice
+Use AI-powered tooltips and step guidance.
 
-Add to your cart and export shopping lists as PDFs/CSVs in one click
+Build & download smart grocery lists in one click.
 
-Enjoy a seamless, responsive user experience—with admin controls for reviewers
+Enjoy feature-rich, modern admin and user controls.
 
-Contributing 🙌
-Fork, branch, and submit pull requests for features or bugfixes
+🙌 Contributing
+Fork & branch this repo, then open a pull request!
 
-Issues and suggestions very welcome
+Suggestions, issues, and feature ideas are highly encouraged.
 
-License
-This project is open source and free for educational/personal use.
-See the LICENSE file for details.
+📝 License
+MIT License – use, share, learn, and enjoy!
 
-Contact
+📬 Contact
 Developed & maintained by Vansh Prakash Machhi
-Feedback: machhivansh470@gmail.com
+✉️ machhivansh470@gmail.com
 
-Cook smarter. Eat healthier. Try new things.
-SwadShaala is your digital sous chef—let’s cook together!
+🍳 Master every recipe. Eat healthier. Learn something new—every day.
+SwadShaala: Your digital sous chef & cooking mentor for the smart home.
