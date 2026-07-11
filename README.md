@@ -80,8 +80,6 @@ So many want to cook but… scaling fails, ingredient doubts, utensil confusion,
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![VSCode](https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
----
-
   ---
 
 # 📸 Project Screenshots
