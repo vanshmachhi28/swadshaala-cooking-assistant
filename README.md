@@ -92,12 +92,12 @@ So many want to cook but… scaling fails, ingredient doubts, utensil confusion,
 ---
 
 ## Admin Dashboard
-![Admin Dashboard](screenshots/Admin Dashboard.png)
+![Admin Dashboard](screenshots/Admin_Dashboard.png)
 
 ---
 
 ## Admin Query
-![Admin Query](screenshots/Admin Query.png)
+![Admin Query](screenshots/Admin_Query.png)
 
 ---
 
