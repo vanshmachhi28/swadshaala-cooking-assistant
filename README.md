@@ -2,6 +2,7 @@
 
 Welcome to SwadShaala, the next-generation web platform where tradition meets technology! Cook smarter, safer, and healthier with structured recipe management, AI-powered guidance, instant grocery planning, ingredient scaling, and a gorgeous, intuitive UI.
 
+---
 
   📘 Project Overview 
 
@@ -20,6 +21,7 @@ Admin dashboard for community management
 
 SwadShaala is all about accessibility, automation, and enjoyment in your kitchen.
 
+---
 
   🛠️ Core Features 
 
@@ -53,10 +55,12 @@ Every user gets a secure dashboard; admins ensure quality and community safety.
 Modern, Responsive UI
 Built with Bootstrap, Animate.css, and a touch of color for a joyful cooking journey!
 
+---
 
   🌏 Why SwadShaala? 
 So many want to cook but… scaling fails, ingredient doubts, utensil confusion, and planning stress hold them back. SwadShaala solves all these problems at every step—making cooking visual, interactive, and always achievable. Master every meal, even if you're just starting out.
 
+---
 
   ## 🛠️ Technologies Used
 
@@ -76,23 +80,51 @@ So many want to cook but… scaling fails, ingredient doubts, utensil confusion,
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![VSCode](https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
+---
 
-  🖼️ Screenshots 
+  ---
 
-See the Screenshots/ folder for more!
+# 📸 Project Screenshots
 
-Home Page
+## Add Recipe
+![Add Recipe](screenshots/Add_Recipe.png)
 
-Login Screen
+---
 
-Recipe List View
+## Admin Dashboard
+![Admin Dashboard](screenshots/AdminDashboard.png)
 
-Add Recipe Form
+---
 
-Admin Dashboard
+## Admin Query
+![Admin Query](screenshots/AdminQuery.png)
 
-Contact Us
+---
 
+## Admin Login
+![Admin Login](screenshots/Admin_Login.png)
+
+---
+
+## Contact Us
+![Contact Us](screenshots/Contact_Us.png)
+
+---
+
+## Home_Page
+![Home Page](screenshots/Home_Page.png)
+
+---
+
+## Recipe_List
+![Recipe_List](screenshots/Recipe_List.png)
+
+---
+
+## User Login
+![User Login](screenshots/User_Login.png)
+
+---
 
   📂 Project Structure 
 
@@ -103,6 +135,7 @@ Screenshots/       # UI screens for demo/review
 diagrams/          # UML, architecture, and process diagrams
 README.md          # Project documentation (this file)
 
+---
 
   🗂️ Project Timeline 
 
@@ -114,6 +147,7 @@ Testing	Manual & automated, edge-case focus, validator tuning
 Optimization	UI/UX polish, bug squashing, mobile & accessibility improvements
 Release	Repository upload, screenshots, documentation, demo-ready project
 
+---
 
   🚀 Quick Start / Installation
 
@@ -142,6 +176,7 @@ bash
 python manage.py runserver
 Visit http://127.0.0.1:8000/ to start using!
 
+---
 
   💡 How to Use 
 
@@ -155,6 +190,7 @@ Build & download smart grocery lists in one click.
 
 Enjoy feature-rich, modern admin and user controls.
 
+---
 
   🙌 Contributing 
 
@@ -162,12 +198,9 @@ Fork & branch this repo, then open a pull request!
 
 Suggestions, issues, and feature ideas are highly encouraged.
 
+---
 
-  📝 License 
-
-MIT License – use, share, learn, and enjoy!
-
-
+  
   📬 Contact 
 
 Developed & maintained by Vansh Prakash Machhi
